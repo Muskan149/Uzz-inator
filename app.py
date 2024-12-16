@@ -69,9 +69,9 @@ def main():
     
 
     # Centering button using columns
-    col1, col2, col3 = st.columns([1, 2, 1])  # Adjust proportions for centering
+    col1, col2, col3, col4, col5, col6, col7 = st.columns(7)  # Adjust proportions for centering
     # Button
-    with col2:
+    with col4:
         if st.button("UzzIfy!", type="primary"):
             if user_text:
                 st.success("Here's your uzzIfied text:")
