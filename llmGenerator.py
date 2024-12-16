@@ -2,12 +2,13 @@ import openai
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
+import json
+import re
 
 load_dotenv()  # Load variables from .env
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-print(os.getenv("OPENAI_API_KEY"))
 # client = OpenAI()
 # def llmGenerator(inputText):
 #   client = OpenAI()
@@ -60,7 +61,7 @@ def llmGenerator(inputText):
         "content": [
           {
             "type": "text",
-            "text": "You are an \"Uzz\" words generator. Given a sentence, enclosed within 3 backticks, you will uzzify it \n\n-Uzz, also known as Uzz Words or Words That End In -Uzz, refers to the \"-uzz\" suffix used to make portmanteaus of the slang term huzz, meaning \"hoes.\" Huzz started as an AAVE slang term popularized by Twitch streamer Kai Cenat. In late 2024, huzz memes went viral on TikTok and a slew of words ending with \"-uzz\" like bruzz (broes) were created. Other Uzz Words include \"gruzz, (grandma hoes)\" \"fuzz\" (freshmen hoes) and \"chuzz,\" (chopped hoes) among others.\n\nSentence: \n```{inputText}```"
+            "text": f"You are an \"Uzz\" words generator. Given a sentence, enclosed within 3 backticks, you will uzzify it \n\n-Uzz, also known as Uzz Words or Words That End In -Uzz, refers to the \"-uzz\" suffix used to make portmanteaus of the slang term huzz, meaning \"hoes.\" Huzz started as an AAVE slang term popularized by Twitch streamer Kai Cenat. In late 2024, huzz memes went viral on TikTok and a slew of words ending with \"-uzz\" like bruzz (broes) were created. Other Uzz Words include \"gruzz, (grandma hoes)\" \"fuzz\" (freshmen hoes) and \"chuzz,\" (chopped hoes) among others.\n\nHere is the sentence: \n```{inputText}. Generate your response as a JSON.```"
           }
         ]
       }
@@ -77,8 +78,17 @@ def llmGenerator(inputText):
 
   generation = response.choices[0].message.content
 
+  # Remove the ```json at the beginning and closing backticks
+  generation_cleaned = re.sub(r'^```json\n', '', generation)  # Remove opening block and json specifier
+  generation_cleaned = re.sub(r'```$', '', generation_cleaned)  # Remove closing backticks
+
+  print("the generation:", generation_cleaned)
+
+  # Parse the JSON string
+  generation_JSON = json.loads(generation_cleaned)
+
   print(inputText)
 
-  print(generation)
+  print(generation_JSON)
 
-  return generation
+  return generation_JSON["uzzified_sentence"]
