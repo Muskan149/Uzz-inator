@@ -76,6 +76,8 @@ def main():
     
     if generate_button:
         if user_text:
+            response = llmGenerator(user_text)
+
             st.success("Here's your uzzIfied text:")
             st.markdown(f"""
                 <div style="
@@ -85,9 +87,12 @@ def main():
                     border-radius: 10px;
                     margin-top: 20px;
                 ">
-                    {llmGenerator(user_text)}
+                    {response}
                 </div>
             """, unsafe_allow_html=True)
+
+            # Path = f'''{response}'''
+            # st.code(Path, language="md")
         else:
             st.warning("Please enter some text to uzz-ify!")
 
