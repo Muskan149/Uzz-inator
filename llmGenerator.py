@@ -75,6 +75,8 @@ def llmGenerator(inputText):
 
   generation = response.choices[0].message.content
 
+  print(inputText)
+
   print(generation)
 
   return generation
