@@ -72,21 +72,24 @@ def main():
     col1, col2, col3, col4, col5, col6, col7 = st.columns(7)  # Adjust proportions for centering
     # Button
     with col4:
-        if st.button("UzzIfy!", type="primary"):
-            if user_text:
-                st.success("Here's your uzzIfied text:")
-                st.markdown(f"""
-                    <div style="
-                        background-color: #f0f2f6;
-                        padding: 20px;
-                        border-radius: 10px;
-                        margin-top: 20px;
-                    ">
-                        {llmGenerator(user_text)}
-                    </div>
-                """, unsafe_allow_html=True)
-            else:
-                st.warning("Please enter some text to uzz-ify!")
+        generate_button = st.button("UzzIfy!", type="primary")
+    
+    if generate_button:
+        if user_text:
+            st.success("Here's your uzzIfied text:")
+            st.markdown(f"""
+                <div style="
+                    color: black;
+                    background-color: #f0f2f6;
+                    padding: 20px;
+                    border-radius: 10px;
+                    margin-top: 20px;
+                ">
+                    {llmGenerator(user_text)}
+                </div>
+            """, unsafe_allow_html=True)
+        else:
+            st.warning("Please enter some text to uzz-ify!")
 
 
     st.markdown("""
