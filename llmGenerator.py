@@ -6,6 +6,8 @@ import os
 load_dotenv()  # Load variables from .env
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
+
+print(os.getenv("OPENAI_API_KEY"))
 # client = OpenAI()
 # def llmGenerator(inputText):
 #   client = OpenAI()

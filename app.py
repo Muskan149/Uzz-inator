@@ -77,7 +77,7 @@ def main():
                 st.success("Here's your uzzIfied text:")
                 st.markdown(f"""
                     <div style="
-                        color: #000000;
+                        color: black;
                         background-color: #f0f2f6;
                         padding: 20px;
                         border-radius: 10px;
