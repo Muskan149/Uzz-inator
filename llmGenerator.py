@@ -53,6 +53,21 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 def llmGenerator(inputText):
   client = OpenAI()
 
+  prompt = f"""Prompt:
+    Transform the "Given Input" sentence (enclosed within backticks) by "uzzifying" it. Rules for uzzifying a sentence:
+
+    Add "-uzz" to all nouns (e.g., "club" → "cluzz", "bros" → "bruzz", "London" -> "Londuzz").
+    Optionally apply "-uzz" to emphasized verbs or adjectives for comedic effect.
+    Skip small functional words (e.g., articles, prepositions, and pronouns like "the," "is," "on").
+    Skip verbs.
+
+    Example Input: "When you walk in the club with bros and see fine hoes."
+    Example Output: "When you walk in the cluzz with bruzz and see fine huzz.
+
+    Given Input: ```{inputText}```
+    Generate your output as a JSON with key uzzified_sentence.
+    """
+
   response = client.chat.completions.create(
     model="gpt-4o-mini",
     messages=[
@@ -61,7 +76,7 @@ def llmGenerator(inputText):
         "content": [
           {
             "type": "text",
-            "text": f"You are an \"Uzz\" words generator. Given a sentence, enclosed within 3 backticks, you will uzzify it \n\n-Uzz, also known as Uzz Words or Words That End In -Uzz, refers to the \"-uzz\" suffix used to make portmanteaus of the slang term huzz, meaning \"hoes.\" Huzz started as an AAVE slang term popularized by Twitch streamer Kai Cenat. In late 2024, huzz memes went viral on TikTok and a slew of words ending with \"-uzz\" like bruzz (broes) were created. Other Uzz Words include \"gruzz, (grandma hoes)\" \"fuzz\" (freshmen hoes) and \"chuzz,\" (chopped hoes) among others.\n\nHere is the sentence: \n```{inputText}. Generate your response as a JSON.```"
+            "text": prompt
           }
         ]
       }

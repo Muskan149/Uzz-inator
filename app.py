@@ -3,6 +3,7 @@ from PIL import Image
 import requests
 from io import BytesIO
 from llmGenerator import llmGenerator
+from uzzinator_nltk import Uzzinator
 
 def main():
     # Page Config
@@ -29,6 +30,18 @@ def main():
             font-style: italic;
             margin-bottom: 2rem;
         }
+        .response-container {
+            color: black;
+            background-color: #f0f2f6;
+            padding: 20px;
+            border-radius: 10px;
+            height: 100%;
+        }
+        .response-label {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #4A4A4A;
+        }
         footer {
             text-align: center;
         }
@@ -42,60 +55,56 @@ def main():
     # Image Row using columns
     col1, col2, col3 = st.columns(3)
     
-    # Method 1: Using local images (uncomment if using local files)
     with col1:
         st.image("images/huzzex-1.png", use_container_width=True)
     with col2:
         st.image("images/huzzex-2.png", use_container_width=True)
     with col3:
         st.image("images/huzzex-3.png", use_container_width=True)
-    
-    # Method 2: Using placeholder images (for development)
-    # placeholder_url = "https://via.placeholder.com/200"
-    # with col1:
-    #     st.image(placeholder_url, use_column_width=True)
-    # with col2:
-    #     st.image(placeholder_url, use_column_width=True)
-    # with col3:
-    #     st.image(placeholder_url, use_column_width=True)
 
     st.text("")
 
     # Text Input
     user_text = st.text_area("Enter text to uzzIfy:", 
-                            placeholder="I am so proud of bro for the Google offer!",
+                            placeholder="I am so proud of bro for the Amazon offer!",
                             height=100)
 
-    
-
     # Centering button using columns
-    col1, col2, col3, col4, col5, col6, col7 = st.columns(7)  # Adjust proportions for centering
-    # Button
+    col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
     with col4:
         generate_button = st.button("UzzIfy!", type="primary")
     
     if generate_button:
         if user_text:
-            response = llmGenerator(user_text)
+            # llmResponse = llmGenerator(user_text)
+            nltk_uzzinartor = Uzzinator()
+            nltkResponse = nltk_uzzinartor.transform(user_text)
 
             st.success("Here's your uzzIfied text:")
+            
+            # Create two columns for responses
+            # left_col, right_col = st.columns(2)
+            
+            # LLama response in left column
+            # with left_col:
+            #     st.markdown('<p class="response-label">LLama</p>', unsafe_allow_html=True)
+            #     st.markdown(f"""
+            #         <div class="response-container">
+            #             {llmResponse}
+            #         </div>
+            #     """, unsafe_allow_html=True)
+            
+            # Heuristics response in right column
+            # with right_col:
+            st.markdown('<p class="response-label">Heuristics</p>', unsafe_allow_html=True)
             st.markdown(f"""
-                <div style="
-                    color: black;
-                    background-color: #f0f2f6;
-                    padding: 20px;
-                    border-radius: 10px;
-                    margin-top: 20px;
-                ">
-                    {response}
+                <div class="response-container">
+                    {nltkResponse}
                 </div>
             """, unsafe_allow_html=True)
 
-            # Path = f'''{response}'''
-            # st.code(Path, language="md")
         else:
             st.warning("Please enter some text to uzz-ify!")
-
 
     st.markdown("""
             ---
