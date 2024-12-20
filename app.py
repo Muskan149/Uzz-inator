@@ -96,7 +96,7 @@ def main():
             
             # Heuristics response in right column
             # with right_col:
-            st.markdown('<p class="response-label">Heuristics</p>', unsafe_allow_html=True)
+            # st.markdown('<p class="response-label">Heuristics</p>', unsafe_allow_html=True)
             st.markdown(f"""
                 <div class="response-container">
                     {nltkResponse}
@@ -108,7 +108,7 @@ def main():
 
     st.markdown("""
             ---
-            <footer> Made with 💛 by the Uzz-inator team </footer>
+            <footer> Made with 💛 by the <a href="https://x.com/muskanmahajan_">Muskan Mahajan</a> </footer>
     """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
