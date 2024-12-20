@@ -108,7 +108,7 @@ def main():
 
     st.markdown("""
             ---
-            <footer> Made with 💛 by the <a href="https://x.com/muskanmahajan_">Muskan Mahajan</a> </footer>
+            <footer> Made with 💛 by <a href="https://x.com/muskanmahajan_">Muskan Mahajan</a> </footer>
     """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
