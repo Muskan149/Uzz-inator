@@ -50,7 +50,7 @@ def main():
 
     # Headers
     st.markdown('<h1 class="main-header">UzzInator 🐝</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="sub-header">Transform your boring text into the freshest -uzz slang!</p>', unsafe_allow_html=True)
+    st.markdown('<p class="sub-header">Transform your boring text into uzz-worthy brilliance! ✨</p>', unsafe_allow_html=True)
 
     # Image Row using columns
     col1, col2, col3 = st.columns(3)
