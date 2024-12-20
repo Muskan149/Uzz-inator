@@ -1,4 +1,8 @@
 import nltk
+import os 
+
+nltk.data.path.append(os.path.join(os.path.dirname(__file__), "uzzinator", "nltk_data"))
+
 # nltk.download('cmudict')
 # nltk.download('punkt')
 # nltk.download('averaged_perceptron_tagger')
