@@ -65,7 +65,7 @@ class Uzzinator:
     def uzzify_word(self, word, pos):
         """Transform a word based on its part of speech."""
         # Skip small functional words
-        skip_pos = {'DT', 'IN', 'PRP', 'PRP$', 'TO', 'WDT', 'WP', 'WP$', 'WRB','VB'}
+        skip_pos = {'DT', 'UZ', 'IN', 'PRP', 'PRP$', 'TO', 'WDT', 'WP', 'WP$', 'WRB','VB'}
         if pos in skip_pos:
             return word
         
