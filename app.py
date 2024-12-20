@@ -3,7 +3,7 @@ from PIL import Image
 import requests
 from io import BytesIO
 from llmGenerator import llmGenerator
-from uzzinator_nltk import Uzzinator
+# from uzzinator_nltk import Uzzinator
 
 def main():
     # Page Config
