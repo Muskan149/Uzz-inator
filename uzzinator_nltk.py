@@ -66,7 +66,7 @@ class Uzzinator:
         """Transform a word based on its part of speech."""
         # Skip small functional words
         skip_pos = {'DT', 'UZ', 'IN', 'PRP', 'PRP$', 'TO', 'WDT', 'WP', 'WP$', 'WRB','VB'}
-        if pos in skip_pos:
+        if pos in skip_pos or word == "i":
             return word
         
         # Always uzzify nouns
