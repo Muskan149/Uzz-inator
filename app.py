@@ -42,8 +42,14 @@ def main():
             font-size: 1.2rem;
             color: #4A4A4A;
         }
-        footer {
+        footer, #product-badge {
             text-align: center;
+        }
+        .footer {
+            display: flex;
+                flex-direction: column;
+                justify-items: center;
+                gap: .5rem;
         }
         </style>
     """, unsafe_allow_html=True)
@@ -108,7 +114,11 @@ def main():
 
     st.markdown("""
             ---
-            <footer> Made with 💛 by <a href="https://x.com/muskanmahajan_">Muskan Mahajan</a> </footer>
+            <div class="footer">
+                <footer> Made with 💛 by <a href="https://x.com/muskanmahajan_">Muskan Mahajan</a> </footer>
+                <br/>
+                <a id ="product-badge" href="https://www.producthunt.com/posts/uzzinnator-brainrot-generator?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-uzzinnator&#0045;brainrot&#0045;generator" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=724236&theme=light" alt="UzzInnator&#0058;&#0032;Brainrot&#0032;Generator - Transform&#0032;your&#0032;boring&#0032;text&#0032;into&#0032;something&#0032;uzz&#0045;worthy&#0033; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+            </div>
     """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
